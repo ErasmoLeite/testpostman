@@ -1,0 +1,114 @@
+{
+	"info": {
+		"_postman_id": "d8a0abed-1035-418a-a7af-e3e690d36342",
+		"name": "IP",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "11485925"
+	},
+	"item": [
+		{
+			"name": "IP",
+			"item": [
+				{
+					"name": "GetIP-IP",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var body = JSON.parse(responseBody);",
+									"tests[\"Status code is 200\"] = responseCode.code === 200;",
+									"",
+									"pm.test(\"String Status Code = OK \", function () {",
+									"    pm.response.to.have.status(\"OK\");",
+									"});",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://postman-echo.com/ip",
+							"protocol": "https",
+							"host": [
+								"postman-echo",
+								"com"
+							],
+							"path": [
+								"ip"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://sasintegra.sascar.com.br/SasIntegra/SasIntegraWSService?wsdl",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"\r",
+									"pm.test(\"Your test name\", function () {\r",
+									"var jsonObject = xml2Json(responseBody);\r",
+									"console.log(jsonObject);\r",
+									"    pm.test(\"Status code is 200\", function () {\r",
+									"        pm.response.to.have.status(200);\r",
+									"    });\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/xml"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:web=\"http://webservice.web.integracao.sascar.com.br/\">\n    <soapenv:Header/>\n    <soapenv:Body>\n        <web:obterPacotePosicoes>\n            <usuario>TOCGR</usuario>\n            <senha>TISISTEMAS2020</senha>\n            <quantidade>1</quantidade>\n        </web:obterPacotePosicoes>\n    </soapenv:Body>\n</soapenv:Envelope>"
+						},
+						"url": {
+							"raw": "http://sasintegra.sascar.com.br/SasIntegra/SasIntegraWSService?wsdl",
+							"protocol": "http",
+							"host": [
+								"sasintegra",
+								"sascar",
+								"com",
+								"br"
+							],
+							"path": [
+								"SasIntegra",
+								"SasIntegraWSService"
+							],
+							"query": [
+								{
+									"key": "wsdl",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
